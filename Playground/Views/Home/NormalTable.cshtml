@@ -1,0 +1,371 @@
+﻿@{
+    ViewBag.Title = "NormalTable";
+}
+
+@section Scripts {
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/table")
+
+    <script>
+
+        $(document).ready(function () {
+
+            //$('#my_popup').popup('hide');
+            $(".selection").hide();
+            var data = "";
+            var arrayData = [];
+            var myArray,resultArray = [];
+            var oTable = $('#example').dataTable();
+
+            $('#example1').click(function () {
+                $(this).toggleClass('selected');
+                data = example1.toString();
+                alert(data);
+                $("#sel").clone().prop({ id: "sel_" + resultArray[1] }).insertAfter("div.selection:last");
+                $('#my_popup').html(resultArray[1] + "." + resultArray[2]);
+                $(sel).show();
+            });
+
+
+            $('button').click(function () {
+                var targetid = $(this).parents("[class*='selection']").attr("id");
+                //$("input[value*='2']").attr("checked", false);
+                //$(this).parent().remove();
+                $(this).parent().replaceWith($("div.selection:first"));
+                //$('input:checkbox[value="' + val + '"]').attr('checked', false);
+                $("input:checkbox[value='2']").removeAttr('checked');
+            });
+
+        });
+
+    </script>
+
+}
+<!-- Add content to the popup -->
+<div id="sel" class="selection col-md-3" style="padding-left: 0px; padding-right: 0px;">
+    <div class="well well-sm" style="margin-right: 10px;">
+        <button class="close">
+            X
+        </button>
+        <p id="my_popup" class="name" style="margin-left: 20px; padding-left: 10px;"></p>
+    </div>
+</div>
+
+
+<!--hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup-->
+<!--button id="button">Count</button-->
+
+<table id="example">
+    <thead>
+        <tr>
+            <th><input type="checkbox" id="selectall" /></th>
+            <th>ITEM NO.<span class="caret"></span></th>
+            <th>DESCRIPTION<span class="glyphicon glyphicon-chevron-down"></span></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th><input type="checkbox" id="selectall" /></th>
+            <th>ITEM NO</th>
+            <th>DESCRIPTION</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr id="example1">	<td align="center"><input type="checkbox" class="case" name="case" value="1" /></td>	<td>1</td>	<td>CA06, CA10, CA12  (CM06, CM10, CM12)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="2" /></td>	<td>2</td>	<td>CA02, CA04, CA06, CA10, CA12  (CM02, CM04, CM06, CM10, CM12)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="3" /></td>	<td>3</td>	<td>CA06, CA10  (CM06, CM10)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="4" /></td>	<td>4</td>	<td>SPCL</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="5" /></td>	<td>5</td>	<td>CA06  (CM06)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="6" /></td>	<td>6</td>	<td>HIGHWAY STANDARD NUMBER {I.E., 2242}</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="7" /></td>	<td>7</td>	<td>WIDTH, FEET (METERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="8" /></td>	<td>8</td>	<td>SECTION NUMBER (I.E., PDA 27)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="9" /></td>	<td>9</td>	<td>GRAY OR DUCTILE</td>	</tr>
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="10" /></td>
+            <td>10</td>
+            <td colspan="13">
+                <table>
+                    <tr>
+                        <th>DESCRIPTION</th>
+                        <th>CORRESPONDING NUMERIC CODE(S)</th>
+                    </tr>
+                    <tr> <td>BD BRIDGE DECK</td>	<td>(16, 18, 27)</td>	</tr>
+                    <tr> <td>MS MASSIVE STRUCTURES</td>	<td>(15)</td>	</tr>
+                    <tr> <td>PC PRECAST CONCRETE STRUCTURES</td>	<td>(19)</td>	</tr>
+                    <tr> <td>PC PRECAST PILES</td>	<td>(24)</td>	</tr>
+                    <tr> <td>PC PRECAST BARRIERS</td>	<td>-</td>	</tr>
+                    <tr> <td>PP PAVEMENT PATCHING</td>	<td>(17)</td>	</tr>
+                    <tr> <td>PS PRECAST PRESTRESSED MEMBERS</td>	<td>(20)</td>	</tr>
+                    <tr> <td>PS PRECAST PRESTRESSED PILES</td>	<td>(25)</td>	</tr>
+                    <tr> <td>PV PAVEMENT, BASE COURSE & WIDENING, DRIVEWAYS</td>	<td>(01, 02, 10, 11)</td>	</tr>
+                    <tr> <td>RR PCC RAILROAD CROSSING</td>	<td>(12)</td>	</tr>
+                    <tr> <td>SC SEAL COAT CONCRETE</td>	<td>(23, 28)</td>	</tr>
+                    <tr> <td>SH PCC SHOULDERS</td>	<td>(29)</td>	</tr>
+                    <tr> <td>SI STRUCTURES-INCIDENTAL, C&G, MEDIAN, CULVERT, HEADWALL</td>	<td>(03, 04, 05, 06, 07, 08,09, 13, 14, 21, 22, 31)</td>	</tr>
+                    <tr> <th colspan="2">(OR)</th>	</tr>
+                    <tr>
+                        <th>ITEM NO.</th>
+                        <th>DESCRIPTION</th>
+                    </tr>
+                    <tr> <td>01</td>	<td>FOR PCC BASE COURSE</td>	</tr>
+                    <tr> <td>02</td>	<td>FOR PCC BASE COURSE WIDENING</td>	</tr>
+                    <tr> <td>03</td>	<td>FOR PCC CURB</td>	</tr>
+                    <tr> <td>04</td>	<td>FOR PCC GUTTER</td>	</tr>
+                    <tr> <td>05</td>	<td>FOR PCC COMBINATION CURB GUTTER</td>	</tr>
+                    <tr> <td>06</td>	<td>FOR PCC STEP CURB & GUTTER</td>	</tr>
+                    <tr> <td>07</td>	<td>FOR PCC HUB GUARD & GUTTER</td>	</tr>
+                    <tr> <td>08</td>	<td>FOR PCC PAVED DITCH</td>	</tr>
+                    <tr> <td>09</td>	<td>FOR PCC MEDIAN</td>	</tr>
+                    <tr> <td>10</td>	<td>FOR PCC PAVEMENT</td>	</tr>
+                    <tr> <td>11</td>	<td>FOR CRCP PAVEMENT</td>	</tr>
+                    <tr> <td>12</td>	<td>FOR PCC RAILROAD CROSSING</td>	</tr>
+                    <tr> <td>13</td>	<td>FOR PCC SIDEWALK</td>	</tr>
+                    <tr> <td>14</td>	<td>FOR PCC SLOPE WALL</td>	</tr>
+                    <tr> <td>15</td>	<td>FOR STRUCTURES</td>	</tr>
+                    <tr> <td>16</td>	<td>FOR BRIDGE DECK</td>	</tr>
+                    <tr> <td>17</td>	<td>FOR PAVEMENT PATCHING</td>	</tr>
+                    <tr> <td>18</td>	<td>FOR BRIDGE DECK PATCHING</td>	</tr>
+                    <tr> <td>19</td>	<td>FOR PRECAST DECK SLAB</td>	</tr>
+                    <tr> <td>20</td>	<td>FOR PRECAST PRESTRESSED BEAMS</td>	</tr>
+                    <tr> <td>21</td>	<td>FOR HEADWALLS</td>	</tr>
+                    <tr> <td>22</td>	<td>FOR HANDRAIL</td>	</tr>
+                    <tr> <td>23</td>	<td>FOR SEAL COAT</td>	</tr>
+                    <tr> <td>24</td>	<td>FOR PRECAST PILING</td>	</tr>
+                    <tr> <td>25</td>	<td>FOR PRECAST PRESTRESSED PILING</td>	</tr>
+                    <tr> <td>26</td>	<td>FOR PNEUMATIC CONCRETE (SHOTCRETE)</td>	</tr>
+                    <tr> <td>27</td>	<td>FOR BRIDGE DECK OVERLAY CONCRETE</td>	</tr>
+                    <tr> <td>28</td>	<td>FOR LATEX CONCRETE</td>	</tr>
+                    <tr> <td>29</td>	<td>FOR PCC SHOULDERS</td>	</tr>
+                    <tr> <td>30</td>	<td>FOR SUB-BASE</td>	</tr>
+                    <tr> <td>31</td>	<td>FOR INCIDENTAL</td>	</tr>
+                    <tr> <td>32</td>	<td>FOR CLSM BACKFILL</td>	</tr>
+                </table>
+            </td>
+        </tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="11" /></td>	<td>11</td>	<td>HEIGHT,    INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="12" /></td>	<td>12</td>	<td>LENGTH,    INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="13" /></td>	<td>13</td>	<td>WIDTH,     INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="14" /></td>	<td>14</td>	<td>DIAMETER,  INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="15" /></td>	<td>15</td>	<td>DEPTH,     INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="16" /></td>	<td>16</td>	<td>THICKNESS, INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="17" /></td>	<td>17</td>	<td>PIECE</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="18" /></td>	<td>18</td>	<td>HEIGHT,    FEET (METERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="19" /></td>	<td>19</td>	<td>LENGTH,    FEET (METERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="20" /></td>	<td>20</td>	<td>WIRE SIZE, GAUGE</td>	</tr>
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="21" /></td>
+            <td>21</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>DESCRIPTION</th>	</tr>
+                    <tr>	<td>01</td>	<td>FOR BARE STRANDED</td>	</tr>
+                    <tr>	<td>02</td>	<td>FOR BARE SOLID</td>	</tr>
+                    <tr>	<td>03</td>	<td>FOR INSULATED STRANDED</td>	</tr>
+                    <tr>	<td>04</td>	<td>FOR INSULATED SOLID</td>	</tr>
+                </table>
+            </td>
+        </tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="22" /></td> <td>22</td>	<td>PAY ITEM CODE NUMBER</td>	</tr>
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="23" /></td>
+            <td>23</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>DESCRIPTION</th>	</tr>
+                    <tr>	<td>01</td>	<td>FOR UNTREATED</td>	</tr>
+                    <tr>	<td>02</td>	<td>FOR CREOSOTE</td>	</tr>
+                    <tr>	<td>03</td>	<td>FOR PENTA</td>	</tr>
+                    <tr>	<td>04</td>	<td>FOR ARSENATES</td>	</tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="24" /></td>	<td>24</td>	<td>WEIGHT/FOOT, POUNDS (WEIGHT/METER, KILOGRAMS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="25" /></td>	<td>25</td>	<td>WEIGHT, POUNDS  (KILOGRAMS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="26" /></td>	<td>26</td>	<td>EQUIVALENT DIAMETER, INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="27" /></td>	<td>27</td>	<td>TYPE</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="28" /></td>	<td>28</td>	<td>WALL THICKNESS, INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="29" /></td>	<td>29</td>	<td>DESIGN CODE</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="30" /></td>	<td>30</td>	<td>GRADE</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="31" /></td>	<td>31</td>	<td>CLASS</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="32" /></td>	<td>32</td>	<td>TYPE I OR II; OR 1 OR 2 {ADHESIVE}</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="33" /></td>	<td>33</td>	<td>NOMINAL DIAMETER, INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="34" /></td>	<td>34</td>	<td>OUTSIDE DIAMETER, INCHES (MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="35" /></td>	<td>35</td>	<td>TYPE A, AA, AP, BB, B OR C {DURABILITY}</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="36" /></td>	<td>36</td>	<td>SQUARE INCHES (SQUARE MILLIMETERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="37" /></td>	<td>37</td>	<td>COLOR</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="38" /></td>	<td>38</td>	<td>NUMBER OF CONDUCTORS AND WIRE SIZE {I.E., 2/C-6}</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="39" /></td>	<td>39</td>	<td>REBAR SIZE  {I.E., 6 }</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="40" /></td>	<td>40</td>	<td>SHAPE</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="41" /></td>	<td>41</td>	<td>GAUGE</td>	</tr>
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="42" /></td>
+            <td>42</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>TYPE</th>	</tr>
+                    <tr>	<td>01</td>	<td>FOR SOUTHERN YELLOW PINE</td>	</tr>
+                    <tr>	<td>02</td>	<td>FOR WESTERN RED CEDAR</td>	</tr>
+                    <tr>	<td>03</td>	<td>FOR DOUGLAS FIR</td>	</tr>
+                    <tr>	<td>04</td>	<td>FOR CYPRESS</td>	</tr>
+                    <tr>	<td>05</td>	<td>FOR HEMLOCK</td>	</tr>
+                    <tr>	<td>06</td>	<td>FOR SPRUCE</td>	</tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="43" /></td>	<td>43</td>	<td>MANUFACTURER CATALOG NUMBER</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="44" /></td>	<td>44</td>	<td>LOSP X TSP                   SP = SPACING, INCHES (MM)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="45" /></td>	<td>45</td>	<td>LODS X TDS      WHERE        LO = LONGITUDINAL</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="46" /></td>	<td>46</td>	<td>WI X L                       T  = TRANSVERSE</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="47" /></td>	<td>47</td>	<td>LODS TWS                     L  = LENGTH, FEET (METERS)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="48" /></td>	<td>48</td>	<td>LOWS TDS       WHERE         WI = WIDTH, INCHES (MM)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="49" /></td>	<td>49</td>	<td>LOWS X TWS                   WS = SMOOTH WIRE SIZE</td>	</tr>
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="50" /></td>
+            <td>50</td>
+            <td>
+                LS X TS                      DS = DEFORMED WIRE SIZE
+                LS = LONGITUDINAL SIZE
+                TS = TRANSVERSE SIZE
+            </td>
+        </tr>
+
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="51" /></td>	<td>51</td>	<td>WIRE SIZE, REINFORCING {I.E., W7 OR D7}</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="52" /></td>	<td>52</td>	<td>LENGTHS OF LEGS {I.E., 4 X 4}</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="53" /></td>	<td>53</td>	<td>REGULAR = 1; HEAVY = 2</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="54" /></td>	<td>54</td>	<td>COPPER OR ALUMINUM</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="55" /></td>	<td>55</td>	<td>DEGREE OF BEND</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="56" /></td>	<td>56</td>	<td>DEGREE OF INTERSECTION</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="57" /></td>	<td>57</td>	<td>NUMBER OF PAIRS</td>	</tr>
+
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="58" /></td>
+            <td>58</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>DESCRIPTION</th>	</tr>
+                    <tr>	<td>01</td>	<td>LETTER UPPER CASE</td>	</tr>
+                    <tr>	<td>02</td>	<td>LETTER LOWER CASE</td>	</tr>
+                    <tr>	<td>03</td>	<td>NUMERAL</td>	</tr>
+                    <tr>	<td>04</td>	<td>SYMBOL</td>	</tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="59" /></td>	<td>59</td>	<td>NUMBER {I.E., 1, 2, ETC.}</td>	</tr>
+
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="60" /></td>
+            <td>60</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>DESCRIPTION</th>	</tr>
+                    <tr>	<td>01</td>	<td>PRISMATIC</td>	</tr>
+                    <tr>	<td>02</td>	<td>REFLECTIVE SHEETING</td>	</tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="61" /></td>	<td>61</td>	<td>BRAND NAME</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="62" /></td>	<td>62</td>	<td>LOCATION CODE</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="63" /></td>	<td>63</td>	<td>WIDTH, INCHES (MILLIMETERS),AS DESCRIBED IN PAY ITEM {NOMINAL}</td>	</tr>
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="64" /></td>
+            <td>64</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>DESCRIPTION</th>	</tr>
+                    <tr>	<td>01</td>	<td>BLOCK/SOLID</td>	</tr>
+                    <tr>	<td>02</td>	<td>GRANULAR/POWDERIZED</td>	</tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="65" /></td>
+            <td>65</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>DESCRIPTION</th>	</tr>
+                    <tr>	<td>02</td>	<td>TWO-COMPONENT</td>	</tr>
+                    <tr>	<td>03</td>	<td>THREE-COMPONENT</td>	</tr>
+                </table>
+            </td>
+        </tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="66" /></td>	<td>66</td>	<td>SHIELDED</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="67" /></td>	<td>67</td>	<td>DEGREE OF BEND</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="68" /></td>	<td>68</td>	<td>DESIGN LOAD</td>	</tr>
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="69" /></td>
+            <td>69</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>USE</th>	</tr>
+                    <tr>	<td>01</td>	<td>PIPE UNDERDRAINS</td>	</tr>
+                    <tr>	<td>02</td>	<td>FRENCH DRAINS</td>	</tr>
+                    <tr>	<td>04</td>	<td>REFLECTIVE CRACK CONTROL</td>	</tr>
+                    <tr>	<td>05</td>	<td>GROUND STABILIZATION</td>	</tr>
+                    <tr>	<td>06</td>	<td>RAILROAD CROSSING</td>	</tr>
+                    <tr>	<td>07</td>	<td>RIPRAP</td>	</tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="70" /></td>	<td>70</td>	<td>WEIGHT, OUNCES/SQUARE YARD  (GRAMS/SQUARE METER)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="71" /></td>   <td>71</td>	<td>MODIFIED - IF SEED IS NOT MODIFIED, LEAVE BLANK</td>	</tr>
+
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="72" /></td>
+            <td>72</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>AGGREGATE TYPE - MICRO SURFACING</th>	</tr>
+                    <tr>	<td>01</td>	<td>LIMESTONE</td>	</tr>
+                    <tr>	<td>02</td>	<td>DOLOMITE</td>	</tr>
+                    <tr>	<td>03</td>	<td>ACBF SLAG</td>	</tr>
+                    <tr>	<td>04</td>	<td>SANDSTONE</td>	</tr>
+                    <tr>	<td>05</td>	<td>CRUSHED GRAVEL</td>	</tr>
+                    <tr>	<td>06</td>	<td>ACBF SLAG / LIMESTONE</td>	</tr>
+                    <tr>	<td>07</td>	<td>SANDSTONE / LIMESTONE</td>	</tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="73" /></td>
+            <td>73</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>DETECTABLE WARNING TYPE</th>	</tr>
+                    <tr>	<td>01</td>	<td>PRECAST CONCRETE</td>	</tr>
+                    <tr>	<td>02</td>	<td>IRON OR STEEL</td>	</tr>
+                    <tr>	<td>03</td>	<td>PLASTIC</td>	</tr>
+                    <tr>	<td>04</td>	<td>COMPOSITE</td>	</tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="74" /></td>	<td>74</td>	<td>REBAR/STEEL PRODUCER NUMBER</td>	</tr>
+
+        <tr>
+            <td align="center"><input type="checkbox" class="case" name="case" value="75" /></td>
+            <td>75</td>
+            <td>
+                <table>
+                    <tr>	<th>ITEM NO.</th>	<th>TYPE</th>	</tr>
+                    <tr>	<td>01</td>	<td>FIXED</td>	</tr>
+                    <tr>	<td>02</td>	<td>GUIDED</td>	</tr>
+                    <tr>	<td>03</td>	<td>NON-GUIDED</td>	</tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="76" /></td>	<td>76</td>	<td>RESIN ABBR: COMPANY NAME-PRODUCT NAME (SEE APPR LIST)</td>	</tr>
+        <tr>	<td align="center"><input type="checkbox" class="case" name="case" value="77" /></td>	<td>77</td>	<td>AGGREGATE ABBR: COMPANY NAME-LOCATION (SEE APPR LIST)</td>	</tr>
+    </tbody>
+</table>
